@@ -1,4 +1,9 @@
-import { getInitialState, cellLifeCycle, getLiveNeighbours } from './index';
+import {
+  getInitialState,
+  cellLifeCycle,
+  getLiveNeighbours,
+  worldTick,
+} from './index';
 
 describe('Get initial state', () => {
   test('Should return correct size', () => {
@@ -40,7 +45,7 @@ describe('Cell life cycle', () => {
   });
 });
 
-describe.only('Correct count live neighbours', () => {
+describe('Correct count live neighbours', () => {
   test('Count for each cell in the world', () => {
     const gameState = [
       [true, false, false],
@@ -64,5 +69,44 @@ describe.only('Correct count live neighbours', () => {
         );
       });
     });
+  });
+});
+
+// Check for common life patterns from https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life#Examples_of_patterns
+describe.only('World tick. Check for common life patterns', () => {
+  test('Check Block', () => {
+    const gameState = [
+      [false, false, false, false],
+      [false, true, true, false],
+      [false, true, true, false],
+      [false, false, false, false],
+    ];
+    const expectedGameState = [
+      [false, false, false, false],
+      [false, true, true, false],
+      [false, true, true, false],
+      [false, false, false, false],
+    ];
+    expect(worldTick(gameState)).toEqual(expectedGameState);
+  });
+  test('Check Blinker', () => {
+    const gameStatePeriod0 = [
+      [false, false, false, false, false],
+      [false, false, true, false, false],
+      [false, false, true, false, false],
+      [false, false, true, false, false],
+      [false, false, false, false, false],
+    ];
+    const gameStatePeriod1 = [
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+      [false, true, true, true, false],
+      [false, false, false, false, false],
+      [false, false, false, false, false],
+    ];
+    const tick1 = worldTick(gameStatePeriod0);
+    expect(tick1).toEqual(gameStatePeriod1);
+    const tick2 = worldTick(tick1);
+    expect(tick2).toEqual(gameStatePeriod0);
   });
 });
