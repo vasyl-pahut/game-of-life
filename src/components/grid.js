@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import type { GameState } from '../game-state/types';
+import type { GameState } from '../game-state';
 import './style.css';
 
 type Props = {

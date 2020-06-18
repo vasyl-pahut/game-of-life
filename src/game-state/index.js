@@ -1,10 +1,12 @@
 // @flow
-import type { GameState } from './types';
-const ROWS: number = 50;
-const COLS: number = 50;
+import { GRID_SIZE } from '../constants';
+export type GameState = Array<Array<boolean>>;
 
 type GetInitialState = (rows?: number, cols?: number) => GameState;
-export const getInitialState: GetInitialState = (rows = ROWS, cols = COLS) => {
+export const getInitialState: GetInitialState = (
+  rows = GRID_SIZE.ROWS,
+  cols = GRID_SIZE.COLS
+) => {
   return Array.from({ length: rows }).map(() =>
     Array.from({ length: cols }).map(() => Boolean(Math.round(Math.random())))
   );

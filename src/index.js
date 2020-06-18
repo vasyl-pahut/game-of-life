@@ -3,15 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Grid } from './components/grid';
 import { getInitialState, worldTick } from './game-state';
+import { TICK_INTERVAL } from './constants';
 import './style.css';
-
-const TICK_SPEED = 400;
 
 const App = () => {
   const [gameState, setGameState] = React.useState(getInitialState());
 
   React.useEffect(() => {
-    let timerId = setInterval(() => setGameState(worldTick), TICK_SPEED);
+    let timerId = setInterval(() => setGameState(worldTick), TICK_INTERVAL);
     return () => {
       clearInterval(timerId);
     };
