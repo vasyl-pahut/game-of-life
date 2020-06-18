@@ -13,6 +13,12 @@
     "prettier"
   ],
   "parser": "babel-eslint",
+  "globals": {
+    "module": true,
+    "test": true,
+    "describe": true,
+    "expect": true
+  },
   "rules": {
     "prettier/prettier": "error"
   }
