@@ -15,7 +15,7 @@ export const Grid = (props: Props) => {
         <div className="row" key={rowIndex}>
           {row.map((cell, cellIndex) => (
             <div
-              className={`cell${cell ? ' alive' : ''}`}
+              className={`cell${cell ? ' cell--alive' : ''}`}
               key={cellIndex}
             ></div>
           ))}
