@@ -7,7 +7,7 @@
     "start": "parcel index.html",
     "flow": "flow",
     "test": "jest",
-    "build": "parcel build index.html --public-url /game-of-life/"
+    "build": "parcel build index.html --public-url ./ --no-content-hash"
   },
   "author": "Vasyl Pahut",
   "license": "ISC",
