@@ -1,13 +1,22 @@
 // @flow
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Grid } from './components/grid';
+import { getInitialState, worldTick } from './game-state';
 import './style.css';
 
-import { Grid } from './components/grid';
-import { getInitialState } from './game-state';
+const TICK_SPEED = 400;
 
 const App = () => {
-  const gameState = getInitialState();
+  const [gameState, setGameState] = React.useState(getInitialState());
+
+  React.useEffect(() => {
+    let timerId = setInterval(() => setGameState(worldTick), TICK_SPEED);
+    return () => {
+      clearInterval(timerId);
+    };
+  }, []);
+
   return (
     <div className="container">
       <h1>Game of Life</h1>

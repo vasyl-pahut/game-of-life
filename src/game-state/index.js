@@ -5,13 +5,9 @@ const COLS: number = 50;
 
 type GetInitialState = (rows?: number, cols?: number) => GameState;
 export const getInitialState: GetInitialState = (rows = ROWS, cols = COLS) => {
-  return Array(rows)
-    .fill()
-    .map(() =>
-      Array(cols)
-        .fill()
-        .map(() => Boolean(Math.round(Math.random())))
-    );
+  return Array.from({ length: rows }).map(() =>
+    Array.from({ length: cols }).map(() => Boolean(Math.round(Math.random())))
+  );
 };
 
 type CellLifeCycle = (cell: boolean, liveNeighbours: number) => boolean;
