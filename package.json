@@ -4,10 +4,10 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "parcel src/index.html",
+    "start": "parcel index.html",
     "flow": "flow",
     "test": "jest",
-    "build": "parcel build src/index.html --public-url /game-of-life/"
+    "build": "parcel build index.html --public-url /game-of-life/"
   },
   "author": "Vasyl Pahut",
   "license": "ISC",
