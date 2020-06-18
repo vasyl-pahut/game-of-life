@@ -1,20 +1,23 @@
 // @flow
 import React from 'react';
+import type { GameState } from '../game-state/types';
 import './style.css';
 
 type Props = {
-  rows: number,
-  cols: number,
+  gameState: GameState,
 };
 
 export const Grid = (props: Props) => {
-  const { rows, cols } = props;
+  const { gameState } = props;
   return (
     <div className="grid">
-      {Array.from({ length: rows }).map((row, rowIndex) => (
+      {gameState.map((row, rowIndex) => (
         <div className="row" key={rowIndex}>
-          {Array.from({ length: cols }).map((cell, cellIndex) => (
-            <div className="cell" key={cellIndex}></div>
+          {row.map((cell, cellIndex) => (
+            <div
+              className={`cell${cell ? ' alive' : ''}`}
+              key={cellIndex}
+            ></div>
           ))}
         </div>
       ))}

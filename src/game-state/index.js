@@ -1,16 +1,10 @@
 // @flow
-const ROWS: number = 20;
-const COLS: number = 20;
-type GameState = Array<Array<boolean>>;
+import type { GameState } from './types';
+const ROWS: number = 50;
+const COLS: number = 50;
 
-type GetInitialState = ({
-  rows: number,
-  cols: number,
-}) => GameState;
-export const getInitialState: GetInitialState = ({
-  rows = ROWS,
-  cols = COLS,
-}) => {
+type GetInitialState = (rows?: number, cols?: number) => GameState;
+export const getInitialState: GetInitialState = (rows = ROWS, cols = COLS) => {
   return Array(rows)
     .fill()
     .map(() =>
