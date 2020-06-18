@@ -6,7 +6,8 @@
   "scripts": {
     "start": "parcel ./src/index.html",
     "flow": "flow",
-    "test": "jest"
+    "test": "jest",
+    "build": "parcel build ./src/index.html"
   },
   "author": "",
   "license": "ISC",
