@@ -2,14 +2,14 @@
   "name": "game-of-life",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "parcel ./src/index.html",
+    "start": "parcel src/index.html",
     "flow": "flow",
     "test": "jest",
-    "build": "parcel build ./src/index.html"
+    "build": "parcel build src/index.html"
   },
-  "author": "",
+  "author": "Vasyl Pahut",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.10.2",
