@@ -1,3 +1,9 @@
-const message = 'hello world';
+// @flow
+import React from 'react';
+import ReactDOM from 'react-dom';
 
-console.log(message);
+const App = () => {
+  return <h1>Game of Life</h1>;
+};
+
+ReactDOM.render(<App />, document.getElementById('app'));
