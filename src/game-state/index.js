@@ -8,7 +8,10 @@ type GetInitialState = ({
   cols: number,
 }) => GameState;
 
-export const getInitialState: GetInitialState = ({ rows = ROWS, cols = COLS }) => {
+export const getInitialState: GetInitialState = ({
+  rows = ROWS,
+  cols = COLS,
+}) => {
   return Array(rows)
     .fill()
     .map(() =>
@@ -16,4 +19,12 @@ export const getInitialState: GetInitialState = ({ rows = ROWS, cols = COLS }) =
         .fill()
         .map(() => Boolean(Math.round(Math.random())))
     );
+};
+
+type CellLifeCycle = (boolean, number) => boolean;
+
+export const cellLifeCycle: CellLifeCycle = (cell, liveNeighbours) => {
+  return cell
+    ? liveNeighbours >= 2 && liveNeighbours <= 3
+    : liveNeighbours === 3;
 };
