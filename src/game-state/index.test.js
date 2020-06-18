@@ -1,4 +1,4 @@
-import { getInitialState, cellLifeCycle } from './index';
+import { getInitialState, cellLifeCycle, getLiveNeighbours } from './index';
 
 describe('Get initial state', () => {
   test('Should return correct size', () => {
@@ -37,5 +37,32 @@ describe('Cell life cycle', () => {
 
   test('Reproduction. Dead cell become alive if 3 live neighbours', () => {
     expect(cellLifeCycle(false, 3)).toBe(true);
+  });
+});
+
+describe.only('Correct count live neighbours', () => {
+  test('Count for each cell in the world', () => {
+    const gameState = [
+      [true, false, false],
+      [false, false, true],
+      [false, true, false],
+    ];
+    const expectedLiveNeighbours = [
+      [0, 2, 1],
+      [2, 3, 1],
+      [1, 1, 2],
+    ];
+    gameState.forEach((row, rowIndex) => {
+      row.forEach((cell, cellIndex) => {
+        const liveNeighbours = getLiveNeighbours({
+          rowIndex,
+          cellIndex,
+          gameState,
+        });
+        expect(liveNeighbours).toEqual(
+          expectedLiveNeighbours[rowIndex][cellIndex]
+        );
+      });
+    });
   });
 });
